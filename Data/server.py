@@ -1,12 +1,12 @@
 import socket
 import time
-import seeed_dht
-import math
-import sys
-from grove.adc import ADC
-
-#gui module
-fomr tkinter import *
+# import seeed_dht
+# import math
+# import sys
+# from grove.adc import ADC
+#
+# #gui module
+# fomr tkinter import *
 
 
 HOST = '192.168.31.237'  # Standard loopback interface address (localhost)

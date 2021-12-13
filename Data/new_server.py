@@ -2,25 +2,25 @@ import socket
 import time
 
 
-def receive_data():
-    # for DHT11/DHT22, pin 18
-    sensor = seeed_dht.DHT("11", 18)
-
-    # while True:
-    humi, temp = sensor.read()
-    if not humi is None:
-        print('DHT{0}, humidity {1:.1f}%, temperature {2:.1f}*'.format(sensor.dht_type, humi, temp))
-        data = '{},{}'.format(humi, temp)
-        return data
-    else:
-        print('DHT{0}, humidity & temperature: {1}'.format(sensor.dht_type, temp))
-
-    time.sleep(1)
+# def receive_data():
+#     # for DHT11/DHT22, pin 18
+#     sensor = seeed_dht.DHT("11", 18)
+#
+#     # while True:
+#     humi, temp = sensor.read()
+#     if not humi is None:
+#         print('DHT{0}, humidity {1:.1f}%, temperature {2:.1f}*'.format(sensor.dht_type, humi, temp))
+#         data = '{},{}'.format(humi, temp)
+#         return data
+#     else:
+#         print('DHT{0}, humidity & temperature: {1}'.format(sensor.dht_type, temp))
+#
+#     time.sleep(1)
 
 def server_program():
 
     # change this
-    host = '192.168.1.10'
+    host = '127.0.0.1'
     port = 5000  # initiate port no above 1024
 
     server_socket = socket.socket()  # get instance
@@ -38,7 +38,8 @@ def server_program():
             # if data is not received break
             break
         print("from connected user: " + str(data))
-        data = receive_data()
+        # data = receive_data()
+        data = "Hello World"
         conn.send(data.encode())  # send data to the client
 
     conn.close()  # close the connection
