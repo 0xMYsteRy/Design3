@@ -1,0 +1,54 @@
+export FLASK_APP=app.py
+flask run --host=0.0.0.0
+flask run --host=0.0.0.0 --port=80
+
+
+from flask import Flask,render_template,url_for,request,redirect, make_response
+import random
+import json
+from time import time
+from random import random
+from flask import Flask, render_template, make_response
+from seeed_dht import DHT  # Temperature & Humidity
+from grove.grove_moisture_sensor import GroveMoistureSensor  # Moisture
+from final import *
+
+app = Flask(_name_)
+
+@app.route('/', methods=["GET", "POST"])
+def main():
+    return render_template('index.html')
+
+
+@app.route('/data', methods=["GET", "POST"])
+def data():
+    # Data Format
+
+    # Grove - Moisture Sensor connected to port A0
+    sensor3 = GroveMoistureSensor(0)
+
+    # Grove - Temperature&Humidity Sensor connected to port D5
+    sensor4 = DHT('11', 26)
+
+    # [TIME, Temperature, Humidity]
+    humi, temp = sensor4.read()
+    print('\ntemperature {}C, humidity {}%'.format(temp, humi))
+
+
+    data = [time() * 1000, temp, humi]
+
+    response = make_response(json.dumps(data))
+
+    response.content_type = 'application/json'
+
+    return response
+
+@app.route('/humandata',methods=['GET'])
+def transfer_data():
+    data = senddata()
+
+    trans_data = {
+        'Enter_Counter':data.get('Enter_Counter'),
+        'Exit_Counter':data.get('Exit_Counter'),
+    }
+    return jsonify(trans_data

@@ -31,7 +31,7 @@
 <body>
 
     <div class="jumbotron">
-        <h1 class="text-center text-white">Welcome to Sensor Visualization </h1>
+        <h1 class="text-center text-white"> Visualization Dashboard</h1>
     </div>
     <br>
     <br>
@@ -40,25 +40,37 @@
 
         <div class="row">
 
-            <div class="col-5 jumbotron p-2 mx-1">
+            <div class="col jumbotron p-2 mx-1">
                 <h1 class="sensor1"> Sensor : </h1>
             </div>
             <br>
 
-            <div class="col-5 jumbotron p-2 mx-1">
+            <div class="col jumbotron p-2 mx-1">
                 <h1 class="sensor2">Sensor :</h1>
             </div>
+
+            <div class="col jumbotron p-2 mx-1">
+                <h1 class="sensor3">Sensor :</h1>
+            </div>
+
             <br>
-
-
-
         </div>
+        <div class="row">
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor4">Person in :</h1>
+            </div>
+
+            <div class="col-5 jumbotron p-2 mx-1">
+                <h1 class="sensor5">Person out :</h1>
+            </div>
+        </div>
+
     </div>
 
     <style>
 
         .jumbotron{
-            widows: 150px;
+            widows: 50px;
             height: 220px;
             justify-content: center;
         }
@@ -124,14 +136,39 @@
                 data2.push(result[0]);
                 data2.push(result[2]);
 
+                // Add the Moiture
+                var data3 = [];
+                data3.push(result[0]);
+                data3.push(result[3]);
+
+                // Add the person in & out
+                var data4 = [];
+                data4.push(result[0]);
+                data4.push(result[4]);
+
+                // Add the person out
+                var data5 = [];
+                data5.push(result[0]);
+                data5.push(result[5]);
+
 
                 chartTemperatue.series[0].addPoint(data1, true, shiftTemperature);
                 chartHumidity.series[0].addPoint(data2, true, shiftHumidity);
+
                 $(".sensor1").text("");
                 $(".sensor1").text("Temperature : " +  Math.round(data1[1]) );
 
                 $(".sensor2").text("");
                 $(".sensor2").text("Humidity : " +  Math.round(data2[1]) );
+
+                $(".sensor3").text("");
+                $(".sensor3").text("Moisture : " +  Math.round(data3[1]) );
+
+                $(".sensor4").text("");
+                $(".sensor4").text("Person in : " +  Math.round(data4[1]) );
+
+                $(".sensor5").text("");
+                $(".sensor5").text("Person out : " +  Math.round(data5[1]) );
 
                 // call it again after one second
                 setTimeout(requestData, 2000);
@@ -247,13 +284,13 @@
                 Center the Title
              */
             var t1 = document.querySelector("#title");
-            t1.classList.add("text-white");
+            t1.classList.add("text-black");
             t1.classList.add("text-center");
             t1.classList.add("display-3");
         }
     }
-    const imgUrl = 'https://media3.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif'
-    const size = "50";
+    const imgUrl = 'https://www.techrepublic.com/a/hub/i/r/2020/05/15/e8a90ddc-f7f9-4617-8f19-f0c3fafe698a/resize/1200x/cef3280023bceb1eca6295bb21289eb3/istock-955408648.jpg'
+    const size = "60";
     var obj = new Image(imgUrl, size);
     obj.backgroundImage();
     obj.centerTitle();

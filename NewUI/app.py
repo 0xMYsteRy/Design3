@@ -1,11 +1,10 @@
-from flask import Flask,render_template,url_for,request,redirect, make_response
 import random
 import json
 from time import time
 from random import random
 from flask import Flask, render_template, make_response
 
-from data import *
+# from data import *
 
 app = Flask(__name__)
 
@@ -17,13 +16,34 @@ def main():
 
 @app.route('/data', methods=["GET", "POST"])
 def data():
-    # Data Format
-    # [TIME, Temperature, Humidity]
+
+    # # Data Format
+    # # [TIME, Temperature, Humidity]
+    #
+    # # Grove - Moisture Sensor connected to port A0
+    # sensor3 = GroveMoistureSensor(0)
+    #
+    # # Grove - Temperature&Humidity Sensor connected to port D5
+    # sensor4 = DHT('11', 26)
+    #
+    # humi, temp = sensor4.read()
+    # print('\ntemperature {}C, humidity {}%'.format(temp, humi))
+    #
+    # mois = sensor3.moisture
+    # if 0 <= mois and mois < 300:
+    #     level = 'dry'
+    # elif 300 <= mois and mois < 600:
+    #     level = 'moist'
+    # else:
+    #     level = 'wet'
+    # print('moisture: {}, {}\n'.format(mois, level))
 
     Temperature = random() * 100
     Humidity = random() * 55
-
-    data = [time() * 1000, Temperature, Humidity]
+    Moisture = random() * 60
+    PersonIn = random() * 10
+    PersonOut = random() * 10
+    data = [time() * 1000, Temperature, Humidity, Moisture, PersonIn, PersonOut]
 
     response = make_response(json.dumps(data))
 

@@ -5,10 +5,10 @@
 # pip3 install Flask-RESTful
 
 try:
-    from flask import *
+    from main import *
     from flask_restful import Resource,Api
     from flask_restful import reqparse
-    from flask import request
+    from main import request
     import time
     import datetime
     import json
