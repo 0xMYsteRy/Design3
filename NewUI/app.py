@@ -41,8 +41,8 @@ def data():
     Temperature = random() * 100
     Humidity = random() * 55
     Moisture = random() * 60
-    PersonIn = random() * 10
-    PersonOut = random() * 10
+    PersonIn = random() * 5
+    PersonOut = random() * 5
     data = [time() * 1000, Temperature, Humidity, Moisture, PersonIn, PersonOut]
 
     response = make_response(json.dumps(data))
