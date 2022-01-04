@@ -2,6 +2,9 @@ export FLASK_APP=app.py
 flask run --host=0.0.0.0
 flask run --host=0.0.0.0 --port=80
 
+<div>
+        <img src="{{ url_for('video') }}" width="50%"/>
+    </div>
 
 from flask import Flask,render_template,url_for,request,redirect, make_response
 import random
