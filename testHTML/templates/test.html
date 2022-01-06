@@ -1,0 +1,23 @@
+<html>
+  <body>
+      <img id="cam" src="{{ url_for('video_feed') }}">
+      <script>
+            var last_frame_time = ''; // no time before first frame to skip longer delay at start
+
+            document.getElementById("cam").addEventListener("load", function() { // event "load" is generated after every loaded frame
+                last_frame_time = new Date();
+            });
+
+            var intervalId = window.setInterval(function(){
+                if(last_frame_time != '') { // to
+                    var current_time = new Date();
+                    var seconds = (current_time - last_frame_time)/1000;
+                    if(seconds >= 1) {
+                        alert("Hello World! " + seconds);
+                        clearInterval(intervalId);  // stop checking it
+                    }
+                }
+            }, 100);  // 100ms = 0.1s
+      </script>
+  </body>
+</html>
