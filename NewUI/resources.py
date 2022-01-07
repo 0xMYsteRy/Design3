@@ -5,8 +5,6 @@ import globals
 
 def main():
 
-
-
     globals.temperature = random() * 100
     globals.humidity = random() * 55
     globals.moisture = random() * 60
@@ -15,7 +13,7 @@ def main():
         # if Enter_Counter
         # Exit_Counter = randint(0,5)
     globals.exit_Counter = random() * 5
-    print(globals.temperature, globals.humidity, globals.moisture, globals.enter_Counter, globals.exit_Counter)
+    print(globals.enter_Counter, globals.exit_Counter)
     time.sleep(2)
 
 

@@ -24,26 +24,26 @@ def data():
     # [TIME, Temperature, Humidity]
 
     # Grove - Moisture Sensor connected to port A0
-    sensor3 = GroveMoistureSensor(0)
+    # sensor3 = GroveMoistureSensor(0)
 
-    # Grove - Temperature&Humidity Sensor connected to port D5
-    sensor4 = DHT('11', 26)
+    # Grove - Temperature&Humidity Sensor connected to port PWM
+    #sensor4 = DHT('11', 12)
 
-    humidity, temperature = sensor4.read()
-    print('\ntemperature {}C, humidity {}%'.format(temperature, humidity))
+    #humidity, temperature = sensor4.read()
+    # print('\ntemperature {}C, humidity {}%'.format(temperature, humidity))
 
-    moisture = sensor3.moisture
-    if 0 <= moisture and moisture < 300:
-        level = 'dry'
-    elif 300 <= moisture and moisture < 600:
-        level = 'moist'
-    else:
-        level = 'wet'
-    print('moisture: {}, {}\n'.format(moisture, level))
+    # moisture = sensor3.moisture
+    # if 0 <= moisture and moisture < 300:
+    #     level = 'dry'
+    # elif 300 <= moisture and moisture < 600:
+    #     level = 'moist'
+    # else:
+    #     level = 'wet'
+    # print('moisture: {}, {}\n'.format(moisture, level))
 
-    # temperature = random() * 100
-    # humidity = random() * 55
-    # moisture = random() * 60
+    temperature = random() * 100
+    humidity = random() * 55
+    moisture = random() * 60
     # PersonIn = random() * 5
     # PersonOut = random() * 5
     # Temperature = resources.Temperature
@@ -55,8 +55,9 @@ def data():
 
     resources.main()
 
-    data = [time() * 1000, temperature, humidity, moisture, globals.enter_Counter, globals.exit_Counter]
+    data = [time(), temperature, humidity, moisture, globals.enter_Counter, globals.exit_Counter]
     #data = [time() * 1000, temp, humi, mois, PersonIn, PersonOut]
+
 
     response = make_response(json.dumps(data))
 
